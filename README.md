@@ -15,7 +15,7 @@ Start mining PKT Cash with just a few clicks.
 </p>
 
 <p align="center">
-Minr runs on Windows, linux and MacOS. Find the right build for your system at [pkt.watch/minr](https://pkt.watch/minr/)
+Minr runs on Windows, linux and MacOS. Find the right build for your system at https://pkt.watch/minr
 </p>
 
 <p align="center">
