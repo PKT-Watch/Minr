@@ -1,0 +1,47 @@
+{
+  "productName": "minr",
+  "appId": "watch.pkt.minr",
+  "dmg": {
+    "contents": [
+      {
+        "x": 194,
+        "y": 345
+      },
+      {
+        "x": 450,
+        "y": 345,
+        "type": "link",
+        "path": "/Applications"
+      }
+    ]
+  },
+  "nsis": {
+    "installerIcon": "./build/icon.ico",
+    "uninstallerIcon": "./build/icon.ico"
+  },
+  "mac": {
+    "hardenedRuntime": true,
+    "entitlements": "build/entitlements.mac.plist",
+    "entitlementsInherit": "build/entitlements.mac.plist",
+    "target": {
+      "target": "default",
+      "arch": [
+        "arm64",
+        "x64"
+      ]
+    }
+  },
+  "win": {
+    "target": "nsis",
+    "icon": "./build/icon.ico"
+  },
+  "linux": {
+    "target": ["deb", "rpm"],
+    "category": "Utility",
+    "icon": "./build/icon.icns"
+  },
+  "afterSign": "scripts/notarize.js",
+  "files": [
+    "!scripts"
+  ]
+}

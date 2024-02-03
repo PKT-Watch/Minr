@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>minr</title>
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+
+<body>
+
+  <div class="d-none">
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" >
+      <symbol id="svg-logo" x="0" y="0" viewBox="0 0 300.1 72.7" style="enable-background:new 0 0 300.1 72.7" xml:space="preserve"><path fill="currentColor" class="st0" d="M78.9 0c-18.2 0-33 14.8-33 33v39.7h20.7V33c0-6.8 5.5-12.3 12.3-12.3 6.8 0 12.3 5.5 12.3 12.3v39.7h20.7V33c0-18.2-14.8-33-33-33z"/><path fill="currentColor" class="st0" d="M33 0C14.8 0 0 14.8 0 33v39.7h20.7V33c0-6.8 5.5-12.3 12.3-12.3 6.8 0 12.3 5.5 12.3 12.3v39.7H66V33C66 14.8 51.2 0 33 0zM300.1 33c0-18.2-14.8-33-33-33s-33 14.8-33 33v39.7h20.7V33c0-6.8 5.5-12.3 12.3-12.3 6.8 0 12.3 5.5 12.3 12.3M189.2 0c-18.2 0-33 14.8-33 33v39.7h20.7V33c0-6.8 5.5-12.3 12.3-12.3 6.8 0 12.3 5.5 12.3 12.3v39.7h20.7V33c0-18.2-14.8-33-33-33zM123.7 10.3h20.7v22.9h-20.7z"/><circle fill="currentColor" class="st0" cx="134" cy="62.3" r="10.3"/><circle fill="currentColor" class="st0" cx="134" cy="10.3" r="10.3"/><circle fill="currentColor" class="st0" cx="289.7" cy="33.3" r="10.3"/><circle fill="currentColor" class="st0" cx="134" cy="33.3" r="10.3"/></symbol>
+      <symbol id="svg-fastforward" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"/></symbol>
+    </svg>
+  </div>
+
+    <div class="page-welcome">
+      <div class="onboard">
+
+        <div class="onboard-step box text-center active anim-in" id="onboard-welcome">
+          <div class="title">Checking your system...</div>
+
+          <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+
+        </div>
+
+        <div class="onboard-step box text-center" id="onboard-packetcrypt-check">
+          <p class="title">Do you have Packetcrypt installed?</p>
+
+          <div class="answer-options mt-3">
+            <button class="answer-button btn btn-light btn-lg shadow" id="btnOnboardPacketcryptInstalled_true" data-step="#onboard-packetcrypt-find">Yes</button>
+            <button class="answer-button btn btn-light btn-lg shadow" id="btnOnboardPacketcryptInstalled_false" data-step="#onboard-packetcrypt-download">No</button>
+          </div>
+        </div>
+
+        <div class="onboard-step box text-center" id="onboard-packetcrypt-find">
+          <div class="title">Please locate PacketCrypt to continue</div>
+
+          <p>Waiting...</p>
+
+          <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+        </div>
+
+        <div class="onboard-step box text-center" id="onboard-packetcrypt-download">
+          <p class="title">I need to download and install PacketCrypt.<br>Hit the button below to start the process.</p>
+
+          <button id="btnOnboardPacketcryptDownload" class="btn btn-light btn-lg shadow" data-step="#onboard-packetcrypt-install">Download now</button>
+        </div>
+
+        <div class="onboard-step box text-center" id="onboard-packetcrypt-install">
+          <div id="onboard-packetcrypt-install-instructions-win32" class="visible-win32 d-none">
+            <p class="title">Once the download is complete, I will try to extract the archive and install PacketCrypt.</p>
+            <p>Please wait...</p>
+
+            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+          </div>
+
+          <div id="onboard-packetcrypt-install-instructions-macos" class="visible-macos d-none">
+            <p class="title">Downloading and installing PacketCrypt.</p>
+            <p>Please wait...</p>
+
+            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+          </div>
+
+          <div id="onboard-packetcrypt-install-instructions-linux" class="visible-linux d-none">
+            <p class="title">Downloading and installing PacketCrypt.</p>
+            <p>Please wait...</p>
+
+            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+          </div>
+        </div>
+
+        <div class="onboard-step box text-center" id="onboard-payment-address">
+          <p class="title">Great! PacketCrypt is installed and ready</p>
+
+          <p>Let's get you mining...</p>
+
+          <hr>
+
+          <p>Please enter your PKT wallet address</p>
+
+          <div class="width-constrained">
+            <div class="popover-container">
+              <div class="popover popover-error" id="address-validation-error">
+                Hmmm, that address doesn't look correct
+              </div>
+              <input type="text" id="txtOnboardPaymentAddr" placeholder="Your PKT address..." class="input-lg">
+            </div>
+
+            <div class="form-note">
+              <p>You need a PKT wallet to store PKT and collect your mining rewards. If you don't have a PKT wallet, I recommend installing the Pkt.world wallet which can be downloaded <a onclick="openExternalLink(event)" data-url="https://pkt.world/wallet">here</a>.</p>
+              <p>Other wallets can be found <a onclick="openExternalLink(event)" data-url="https://pkt.cash/wallet">here</a>.</p>
+            </div>
+          </div>
+
+          <button id="btnOnboardSaveAddress" class="btn btn-light btn-lg shadow" data-step="#onboard-threads">Next</button>
+        </div>
+
+        <div class="onboard-step box text-center" id="onboard-threads">
+          <p>How many CPU threads should the miner use?</p>
+
+          <div class="width-constrained">
+            <div class="input-group">
+              <input type="number" id="txtOnboardThreads" placeholder="MAX" class="input-lg">
+              <span class="addon bg-light">
+                of&nbsp; <span id="txtOnboardThreads-Count">--</span>
+              </span>
+            </div>
+
+            <div class="form-note">Tip: More threads means more mining power. Choose less threads if you want to use your computer whilst you mine.</div>
+          </div>
+
+          <button id="btnOnboardSaveThreads" class="btn btn-light btn-lg shadow" data-step="#onboard-end">Next</button>
+        </div>
+
+        <div class="onboard-step box text-center" id="onboard-end">
+          <p>I've selected some mining pools for you. You can change these later.</p>
+
+          <div class="width-constrained">
+            <ul class="list-group pool-selection-list mb-3 text-left" id="pool-selection-list"></ul>
+          </div>
+
+          <button id="btnOnboardEnd" class="btn btn-light btn-lg shadow">Start mining</button>
+        </div>
+
+        <div class="footer">
+          <button id="btnOnboardSkip" class="btn btn-text">Skip <svg class="icon"><use href="#svg-fastforward"></use></svg></button>
+        </div>
+        
+      </div>
+    </div>
+
+    <script src="./welcome.js"></script>
+</body>
+</html>

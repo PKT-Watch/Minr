@@ -1,0 +1,32 @@
+.indicator {
+    display: inline-flex;
+    align-items: center;
+
+    &::before {
+        content: "";
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        border-radius: 1000px;
+        background: hotpink;
+        margin-right: .5rem;
+    }
+
+    &.indicator-success {
+        &::before {
+            background: var(--color-success);
+        }
+    }
+
+    &.indicator-warning {
+        &::before {
+            background: var(--color-warning);   
+        }
+    }
+
+    &.indicator-danger {
+        &::before {
+            background: var(--color-danger);
+        }
+    }
+}

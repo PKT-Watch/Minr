@@ -1,0 +1,55 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+}
+
+.terminal-container {
+  width: 100vw;
+  max-height: 100%;
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+#terminal {
+  background: #000;
+  flex: 1;
+  padding: 1rem;
+}
+
+.xterm .xterm-viewport {
+  /* see : https://github.com/xtermjs/xterm.js/issues/3564#issuecomment-1004417440 */
+  width: initial !important;
+}
+
+.controls {
+  padding: 2rem;
+}
+
+.stats-container {
+  display: flex;
+  padding: 30px;
+}
+
+.stats-container .box {
+  padding: 1rem;
+  border: 1px solid #e6e6e6;
+  border-radius: 4px;
+  margin-left: .5rem;
+  flex: 1;
+}
+
+.stats-container .box:first-child {
+  margin-left: 0;
+}

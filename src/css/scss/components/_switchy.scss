@@ -1,0 +1,224 @@
+@use "sass:math";
+/* 
+## $component-height is used to
+## scale the switch component.
+## All other dimensions will be
+## calculated using this value
+## as a base.
+## Default = 30px
+*/
+$component-height: 30px;
+
+// ## Colour theme variables
+// ## https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/
+$tint-red: rgb(255, 59, 48);
+$tint-orange: rgb(255, 149, 0);
+$tint-yellow: rgb(255, 204, 0);
+$tint-green: rgb(76, 217, 100); // default
+$tint-teal-blue: rgb(90, 200, 250);
+$tint-blue: rgb(0, 122, 255);
+$tint-purple: rgb(88, 86, 214);
+$tint-pink: rgb(255, 45, 85);
+
+$default-theme: $tint-green;
+
+$sm-scale-factor: 0.75;
+$lg-scale-factor: 1.25;
+
+.switchy input {
+  display: none;
+}
+
+.switchy * {
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+.switchy {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.switchy span {
+  display: inline-block;
+  width: $component-height * 1.6;
+  height: $component-height;
+  position: relative;
+  border-radius: math.div($component-height, 2);
+  border: 1px solid #cecece;
+  transition: all .6s linear;
+  margin-right: .5rem;
+}
+
+.switchy input:checked ~ span {
+  background: var(--color-primary);
+  transition: all .2s ease;
+}
+
+.switchy span:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: math.div($component-height, 2);
+  background: #FFF;
+  transition: all .4s ease;
+}
+
+.switchy span:after {
+  content: "";
+  display: block;
+  width: $component-height - 4px;
+  height: $component-height - 4px;
+  border-radius: math.div(($component-height - 4px), 2);
+  background: #FFF;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.20), 
+              0px 0px 2px 0px rgba(0, 0, 0, 0.60);
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  transition: all .2s linear;
+}
+
+.switchy input:checked ~ span:after {
+  transform: translate3d($component-height * 0.6, 0, 0);
+}
+
+.switchy input:checked ~ span:before {
+  transform: scale3d(0, 0, 0);
+}
+
+/*
+## Themes #############################
+*/
+
+.switchy[data-tint="red"] input:checked ~ span {
+  background: $tint-red;
+}
+
+.switchy[data-tint="orange"] input:checked ~ span {
+  background: $tint-orange;
+}
+
+.switchy[data-tint="yellow"] input:checked ~ span {
+  background: $tint-yellow;
+}
+
+.switchy[data-tint="teal-blue"] input:checked ~ span {
+  background: $tint-teal-blue;
+}
+
+.switchy[data-tint="blue"] input:checked ~ span {
+  background: $tint-blue;
+}
+
+.switchy[data-tint="purple"] input:checked ~ span {
+  background: $tint-purple;
+}
+
+.switchy[data-tint="pink"] input:checked ~ span {
+  background: $tint-pink;
+}
+/*
+## end Themes ###########################
+*/
+
+/*
+## Stretch effect #######################
+*/
+.switchy input:active ~ span:after {
+  width: $component-height + math.div($component-height, 10);
+}
+
+.switchy input:checked:active ~ span:after {
+  transform: translate3d((($component-height * 0.6) - math.div($component-height, 10) - 4px), 0, 0);
+}
+
+/* 
+## end Stretch effect ###################
+*/
+
+/*
+## Scaling ##############################
+*/
+
+// ## switchy-sm
+.switchy-sm span {
+  width: ($component-height * 1.6) * $sm-scale-factor;
+  height: $component-height * $sm-scale-factor;
+  border-radius: math.div($component-height, 2) * $sm-scale-factor;
+}
+
+.switchy-sm span:before {
+  border-radius: math.div($component-height, 2) * $sm-scale-factor;
+}
+
+.switchy-sm span:after {
+  width: ($component-height - 4px) * $sm-scale-factor;
+  height: ($component-height - 4px) * $sm-scale-factor;
+  border-radius: math.div(($component-height - 4px), 2) * $sm-scale-factor;
+}
+
+.switchy-sm input:checked ~ span:after {
+  transform: translate3d(($component-height * 0.6) * $sm-scale-factor, 0, 0);
+}
+
+.switchy-sm input:active ~ span:after {
+  width: ($component-height + math.div($component-height, 10)) * $sm-scale-factor;
+}
+
+.switchy-sm input:checked:active ~ span:after {
+  transform: translate3d(((($component-height * 0.6) - math.div($component-height, 10) - 4px)) * $sm-scale-factor, 0, 0);
+}
+
+// ## switchy-lg
+.switchy-lg span {
+  width: ($component-height * 1.6) * $lg-scale-factor;
+  height: $component-height * $lg-scale-factor;
+  border-radius: math.div($component-height, 2) * $lg-scale-factor;
+}
+
+.switchy-lg span:before {
+  border-radius: math.div($component-height, 2) * $lg-scale-factor;
+}
+
+.switchy-lg span:after {
+  width: ($component-height - 4px) * $lg-scale-factor;
+  height: ($component-height - 4px) * $lg-scale-factor;
+  border-radius: math.div(($component-height - 4px), 2) * $lg-scale-factor;
+}
+
+.switchy-lg input:checked ~ span:after {
+  transform: translate3d(($component-height * 0.6) * $lg-scale-factor, 0, 0);
+}
+
+.switchy-lg input:active ~ span:after {
+  width: ($component-height + math.div($component-height, 10)) * $lg-scale-factor;
+}
+
+.switchy-lg input:checked:active ~ span:after {
+  transform: translate3d(((($component-height * 0.6) - math.div($component-height, 10) - 4px)) * $lg-scale-factor, 0, 0);
+}
+
+/*
+## end Scaling ##########################
+*/
+
+/*
+## States ###############################
+*/
+.switchy input[disabled] ~ span:before {
+  background: #f2f2f2;
+}
+
+.switchy input[disabled] ~ span:after {
+  background: #f2f2f2;
+}
+/* 
+## end States ###########################
+*/ 

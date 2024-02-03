@@ -1,0 +1,20 @@
+
+.page-wallet {
+    .wallet-stats-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: $grid-gap;
+    }
+
+    .external-explorer-controls {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: $grid-gap;
+
+        .box {
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+        }
+    }
+}

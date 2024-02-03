@@ -1,0 +1,28 @@
+
+.section-header {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .controls {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        flex: 1;
+
+        .btn {
+            +.btn {
+                margin-left: .5rem;
+            }
+
+            .material-icons {
+                display: block;
+            }
+        }
+    }
+}

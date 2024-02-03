@@ -1,0 +1,61 @@
+.page-welcome {
+    width: 100vw;
+    height: 100vh; 
+    background: var(--bg-light);
+    background-color: var(--color-primary);
+    background-image: url(../img/bg-lines.svg), url(../img/bg-lines-reverse.svg);
+    background-repeat: no-repeat;
+    background-position: center bottom, center top;
+    background-size: contain;
+    padding: 5vh 5vw;
+    overflow-x: hidden;
+
+    @media (min-width: 1200px) {
+        padding: 7vh 7vw;
+    }
+
+    .box {
+        padding: 5rem;
+        background: transparent;
+        box-shadow: none;
+        color: #FFF;
+        border: none;
+    }
+
+    .answer-options {
+        display: flex;
+
+        button {
+            flex: 1;
+        }
+
+        button + button {
+            margin-left: 1rem;
+        }
+    }
+
+    .form-note {
+        background: rgba(255,255,255,0.3);
+        color: inherit;
+    }
+
+    .width-constrained {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .footer {
+        align-self: end;
+
+        button {
+            color: #FFF;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+
+            span {
+                margin-left: .25rem;
+            }
+        }
+    }
+}

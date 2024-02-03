@@ -1,0 +1,33 @@
+.tabs {
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        font-size: 1.2rem;
+
+        li {
+            transition: var(--transition);
+
+            + li {
+                margin-left: 1.5rem;
+            }
+
+            &.active {
+                color: var(--text-dark);
+            }
+
+            &:hover {
+                color: var(--text-dark);
+            }
+        }
+    }
+}
+
+.tab-content {
+    .tab {
+        &.inactive {
+            display: none;
+        }
+    }
+}

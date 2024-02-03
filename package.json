@@ -1,0 +1,96 @@
+{
+  "name": "minr",
+  "productName": "minr",
+  "version": "0.1.2",
+  "description": "A GUI for PacketCrypt by PKT Watch",
+  "homepage": "https://pkt.watch/minr",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PKT-Watch/Minr.git"
+  },
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\"",
+    "dist": "electron-builder -c electron-builder.json",
+    "distAS": "electron-builder -c electron-builder.json --arm64",
+    "distAll": "electron-builder -c electron-builder.json -mwl"
+  },
+  "keywords": [],
+  "author": {
+    "name": "PKT Watch",
+    "email": "kuzudr@protonmail.com"
+  },
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "icon": "src/img/AppIcon"
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "minr"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-dmg",
+          "config": {
+            "background": "./assets/dmg-background.png",
+            "icon": "src/img/AppIcon.icns",
+            "format": "ULFO"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {
+            "options": {
+              "icon": "assets/app-icon.png"
+            }
+          }
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "chart.js": "^3.7.1",
+    "command-exists": "^1.2.9",
+    "decompress-zip": "^0.3.3",
+    "electron-dl": "^3.3.1",
+    "electron-store": "^8.0.1",
+    "electron-updater": "^5.2.1",
+    "fix-path": "^3.0.0",
+    "node-pty": "^0.10.1",
+    "node-schedule": "^2.1.0",
+    "osx-temperature-sensor": "^1.0.8",
+    "systeminformation": "^5.11.15",
+    "uuid": "^9.0.0",
+    "xterm": "^4.18.0",
+    "xterm-addon-fit": "^0.5.0"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.63",
+    "@electron-forge/maker-deb": "^6.0.0-beta.63",
+    "@electron-forge/maker-dmg": "^6.0.0-beta.63",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.63",
+    "@electron-forge/maker-zip": "^6.0.0-beta.63",
+    "electron": "18.2.2",
+    "electron-builder": "^23.0.3",
+    "electron-notarize": "^1.2.1",
+    "electron-reloader": "^1.2.3"
+  }
+}

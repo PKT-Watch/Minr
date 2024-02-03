@@ -1,0 +1,134 @@
+.pool-selector {
+    display: flex;
+
+    > div:nth-child(2) {
+        font-size: 3rem;
+        display: flex;
+        align-items: center;
+        padding: 0 0.5rem;
+
+        .icon {
+            width: 48px;
+            height: 48px;
+        }
+    }
+
+    .pool-list-wrap {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+
+        > div:nth-child(1) {
+            margin-bottom: .5rem;
+        }
+     }
+
+    .pool-list {
+        border-radius: var(--border-radius);
+        min-height: 300px;
+        padding: .5rem;
+        background: var(--bg-light);
+        flex: 1;
+        min-height: 383px;
+        position: relative;
+
+        .list-item {
+            .diff {
+                width: 50px;
+                text-align: center;
+                font-size: 0.8em;
+                padding: 4px 8px;
+                border-radius: 4px;
+                background: var(--bg-light);
+                margin-right: 1rem;
+                transition: var(--transition);
+                box-shadow: $shadow;
+                border: 1px solid var(--border-color);
+            }
+
+            .settings {
+                width: 50px;
+                padding: 4px 8px;
+                text-align: center;
+                margin-right: 1rem;
+                border-radius: 4px;
+                background: var(--bg-light);
+                box-shadow: $shadow;
+                border: 1px solid var(--border-color);
+
+                svg {
+                    display: block;
+                    width: 20px;
+                    height: 20px;
+                    margin: 0 auto;
+                }
+            }
+
+            .meta {
+                overflow: hidden;
+            }
+
+            .name {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+    
+            .url {
+                color: var(--text-light);
+                font-size: 0.8em;
+                margin-top: 0.25rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            &.invalid-diff {
+                .diff {
+                    background: var(--color-danger);
+                    border-color: var(--color-danger-dark);
+                    color: #FFF;
+                }
+            }
+        }
+    }
+
+    .pool-list-selected {
+        &:not(:empty) {
+            &::before {
+                content: "Primary pool";
+                font-size: .8rem;
+                display: block;
+                margin-top: -2px;
+                margin-bottom: 3px;
+            }
+
+            &::after {
+                content: "Secondary pools";
+                font-size: 0.8rem;
+                display: block;
+                position: absolute;
+                top: 100px;
+            }
+        }
+
+        .list-item {
+            &:first-child {
+                margin-bottom: 30px;
+            }
+        }
+    }
+
+    .add-list-item {
+        margin-top: var(--grid-gap);
+    }
+}
+
+.pool-selector-header {
+    display: flex;
+
+    > div {
+        flex: 1;
+    }
+}

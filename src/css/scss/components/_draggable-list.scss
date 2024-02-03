@@ -1,0 +1,43 @@
+.draggable-list {
+    .list-item {
+        display: flex;
+        align-items: center;
+        background-color: var(--bg-lightest);
+        border: 1px solid var(--border-color-light);
+        padding: 0.5rem 1rem;
+        color: var(--text-dark);
+        box-shadow: var(--box-shadow);
+        margin-bottom: 5px;
+        border-radius: 4px;
+
+        + .list-item {
+            margin-top: -1px;
+        }
+
+        .controls {
+            margin-left: auto;
+
+            .icon {
+                color: var(--text-light);
+                cursor: grab;
+                display: block;
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+        &.sortable-ghost {
+            opacity: .5;
+            border: 1px dashed #e6e6e6;
+
+            > * {
+                opacity: 0;
+            }
+        }
+
+        &.disabled {
+            opacity: .5;
+            cursor: not-allowed;
+        }
+    }
+}

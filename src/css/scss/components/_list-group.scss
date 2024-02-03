@@ -1,0 +1,31 @@
+.list-group {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    border-radius: $border-radius;
+}
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: .5rem 1rem;
+    color: var(--text-dark);
+    text-decoration: none;
+    background-color: var(--bg-lightest);
+    border: 1px solid var(--border-color-light);
+  
+    &:first-child {
+        border-top-left-radius: inherit;
+        border-top-right-radius: inherit;
+    }
+  
+    &:last-child {
+        border-bottom-right-radius: inherit;
+        border-bottom-left-radius: inherit;
+    }
+  
+    & + & {
+      border-top-width: 0;
+    }
+  }

@@ -1,0 +1,51 @@
+
+.notifications-container {
+    position: fixed;
+    left: var(--sidebar-width);
+    right: 0;
+    z-index: 99;
+}
+
+.notifications {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+
+    .notification {
+        padding: .5rem;
+        font-size: .9rem;
+        position: relative;
+
+        &.notification-error {
+            background: var(--color-danger);
+            color: #FFF;
+        }
+
+        &.notification-warning {
+            background: var(--color-warning);
+            color: #FFF;
+        }
+
+        .close {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: url(../img/icon-close.svg) center center no-repeat;
+            background-size: contain;
+            position: absolute;
+            right: .5rem;
+            opacity: .5;
+            transition: var(--transition);
+
+            &:hover {
+                opacity: .75;
+            }
+        }
+
+        &.dismissible {
+            padding-right: 40px;
+        }
+    }
+    
+}

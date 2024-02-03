@@ -1,0 +1,67 @@
+.terminal-window {
+    height: 300px;
+    flex-direction: column;
+    display: none;
+    overflow: hidden;;
+    position: fixed;
+    bottom: 0;
+    left: 80px; // .sidebar width
+    right: 0;
+    z-index: 99;
+
+    &.active {
+        display: flex;
+    }
+
+    &.maximised {
+        height: 100vh;
+    }
+
+    .terminal-container {
+        width: 100%;
+        height: 100%;
+        flex: 1;
+        overflow: hidden;
+        background: #232430;
+        padding: $box-padding;
+        padding-top: 0;
+        box-sizing: border-box;
+    
+        #terminal {
+            flex: 1;
+            height: 100%;
+        }
+    }
+
+    .controls {
+        background: #303142;
+        display: flex;
+        align-items: center;
+        padding-left: 1rem;
+        font-size: .875em;
+
+        button {
+            background: transparent;
+            border: none;
+            color: #FFF;
+            padding: .5rem;
+
+            &:first-child {
+                margin-left: auto;
+            }
+
+            .icon {
+                width: 24px;
+                height: 24px;
+            }
+        }
+        
+    }
+}
+
+.xterm  {
+    .xterm-viewport {
+        /* see : https://github.com/xtermjs/xterm.js/issues/3564#issuecomment-1004417440 */
+        width: initial !important;
+    }
+}

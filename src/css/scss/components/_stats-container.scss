@@ -1,0 +1,27 @@
+
+.stats-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: $grid-gap;
+
+    .box {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .stat {
+        font-size: 1.8rem;
+        color: var(--text-dark);
+        margin-top: auto;
+
+        .units {
+            font-size: .8em;
+            opacity: .6;
+        }
+    }
+
+    .stat-sm {
+        font-size: 1.2rem;
+    }
+
+}

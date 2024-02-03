@@ -1,0 +1,57 @@
+.page-splash {
+    width: 100vw;
+    height: 100vh; 
+    background: var(--bg-light);
+    background-color: var(--color-primary);
+    background-image: url(../img/bg-lines.svg), url(../img/bg-lines-reverse.svg);
+    background-repeat: no-repeat;
+    background-position: center bottom, center top;
+    background-size: contain;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5vh 5vw;
+
+    @media (min-width: 1200px) {
+        padding: 7vh 7vw;
+    }
+
+    .box {
+        padding: 5rem;
+        background: transparent;
+        box-shadow: none;
+        color: #FFF;
+        margin: auto;
+        font-size: 1.4rem;
+        border: none;
+    }
+
+    .logo {
+        margin-bottom: 3rem;
+        width: 310px;
+
+        svg {
+            display: block;
+            margin: 1rem 0;
+        }
+
+        .strapline {
+            font-weight: 300;
+            margin: 0;
+        }
+    }
+
+    .footer {
+        color: #FFF;
+        text-align: center;
+        font-size: .9rem;
+
+        p {
+            margin: 0 0 .5rem 0;
+        }
+
+        img {
+            width: 170px;
+        }
+    }
+}

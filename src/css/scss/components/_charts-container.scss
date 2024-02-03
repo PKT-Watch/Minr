@@ -1,0 +1,164 @@
+.charts-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr; 
+    grid-template-areas: 
+        "box-cpu-usage box-cpu-temp"
+        "box-wallet box-wallet"
+        "line line"; 
+    column-gap: $grid-gap;
+
+    @media (min-width: 1200px) {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto 1fr; 
+        grid-template-areas: 
+            "box-cpu-usage box-cpu-temp box-wallet"
+            "line line line"; 
+    }
+
+    .box {
+        min-width: 0; // chartjs fix
+    }
+}
+
+.box-cpu-usage {
+    grid-area: box-cpu-usage;
+}
+
+.box-cpu-temp {
+    grid-area: box-cpu-temp;
+}
+
+.box-wallet {
+    grid-area: box-wallet;
+    margin-top: $grid-gap;
+
+    @media (min-width: 1200px) {
+        margin-top: 0;
+    }
+
+    .external-explorer-controls {
+        display: none;
+        margin: -20px;
+        border-top: 1px solid var(--border-color);
+
+        @media (min-width: 1080px) {
+            display: flex;
+        }
+
+        .btn {
+            font-size: .8rem;
+            padding: .5rem .55rem;
+            text-align: center;
+            border-radius: 0;
+            background: transparent;
+            flex: 1;
+            border-left: 1px solid var(--border-color);
+
+            &:first-child {
+                border-left: none;
+            }
+
+            &:hover {
+                background: var(--bg-light);
+            }
+        }
+    }
+}
+
+.cpu-chart-container {
+    position: relative;
+    
+    margin: 1rem;
+
+    &::after {
+        content: attr(data-value) '%';
+        font-size: 2rem;
+        color: var(--text-dark);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        @media (min-width: 1340px) {
+            font-size:3rem;
+        }
+    }
+}
+
+.cpu-temp-container {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    align-self: center;
+
+    .value {
+        font-size: 3rem;
+        color: var(--text-dark);
+    }
+}
+
+.chart-line-box {
+    grid-area: line;
+    display: flex;
+    flex-direction: column;
+
+    .title {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .chart {
+        height: 200px;
+        margin: auto 0;
+        position: relative;
+    }
+
+    .key {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        background: #e6e6e6;
+        border-radius: 100px;
+        margin-right: .25rem;
+
+        &.key-encryptions {
+            background: #9B2ADD;
+        }
+
+        &.key-upload {
+            background: #39B4F3;
+        }
+    }
+}
+
+.hide-box-cpu-temp {
+    .charts-container {
+        grid-template-areas: 
+            "box-cpu-usage box-wallet"
+            "line line"; 
+
+        @media (min-width: 1200px) {
+            grid-template-areas: 
+                "box-cpu-usage box-wallet box-wallet"
+                "line line line"; 
+        }
+    }
+
+    .box-cpu-temp {
+        display: none;
+    }
+
+    .box-wallet {
+        margin-top: 0;
+
+        @media (min-width: 1200px) {
+            .external-explorer-controls {
+                .btn {
+                    font-size: .9rem;
+                    padding: .5rem .75rem;
+                }
+            }
+        }
+    }
+}

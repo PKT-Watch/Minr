@@ -1,0 +1,31 @@
+.popover-container {
+    position: relative;
+}
+
+.popover {
+    background: #28222c;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--border-radius);
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -120%);
+    white-space: nowrap;
+    display: none;
+
+    &.active {
+        display: inline-flex;
+    }
+
+    &::after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 14px 10px 0 10px;
+        border-color: #28222c transparent transparent transparent;
+        position: absolute;
+        bottom: -14px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}

@@ -1,0 +1,33 @@
+.pool-selection-list {
+    .list-group-item {
+        display: flex;
+        align-items: center;
+
+        .diff {
+            width: 50px;
+            text-align: center;
+            font-size: .8em;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background: var(--bg-light);
+            margin-right: 1rem;
+        }
+
+        .url {
+            color: var(--text-light);
+            font-size: .8em;
+            margin-top: .25rem;
+        }
+
+        .controls {
+            margin-left: auto;
+        }
+
+        .remove {
+            color: var(--color-danger);
+            background: transparent;
+            text-decoration: none;
+            font-size: .8em;
+        }
+    }
+}

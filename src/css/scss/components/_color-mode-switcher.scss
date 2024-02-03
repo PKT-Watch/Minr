@@ -1,0 +1,32 @@
+.color-mode-switcher {
+    display: flex;
+
+    .item {
+        background: transparent;
+        border-radius: 15px;
+        padding: 0.75rem;       
+
+        + .item {
+            margin-left: 1rem;
+        }
+
+        img {
+            height: 123px;
+            border-radius: 8px;
+            border: 1px solid var(--text-light);
+            transition: var(--transition);
+        }
+
+        &.active {
+            background: var(--bg-light);
+        }
+
+        &:hover {
+            background: var(--bg-light-dark);
+            
+            img {
+                transform: translateY(-3px);
+            }
+        }
+    }
+}

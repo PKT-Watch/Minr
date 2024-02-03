@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>minr</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../node_modules/xterm/css/xterm.css" />
+    <link rel="stylesheet" href="./vendors/awn.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+</head>
+
+<body>
+
+    <div class="d-none">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <symbol id="svg-chevron-down" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+            </symbol>
+            <symbol id="svg-dashboard" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></symbol>
+            <symbol id="svg-wallet" viewBox="0 0 24 24" fill="currentColor"><g><path d="M18,4H6C3.79,4,2,5.79,2,8v8c0,2.21,1.79,4,4,4h12c2.21,0,4-1.79,4-4V8C22,5.79,20.21,4,18,4z M16.14,13.77 c-0.24,0.2-0.57,0.28-0.88,0.2L4.15,11.25C4.45,10.52,5.16,10,6,10h12c0.67,0,1.26,0.34,1.63,0.84L16.14,13.77z M6,6h12 c1.1,0,2,0.9,2,2v0.55C19.41,8.21,18.73,8,18,8H6C5.27,8,4.59,8.21,4,8.55V8C4,6.9,4.9,6,6,6z"/></g></symbol>
+            <symbol id="svg-calendar-month" viewBox="0 0 24 24" fill="currentColor"><g><path d="M19,4h-1V2h-2v2H8V2H6v2H5C3.89,4,3.01,4.9,3.01,6L3,20c0,1.1,0.89,2,2,2h14c1.1,0,2-0.9,2-2V6C21,4.9,20.1,4,19,4z M19,20 H5V10h14V20z M9,14H7v-2h2V14z M13,14h-2v-2h2V14z M17,14h-2v-2h2V14z M9,18H7v-2h2V18z M13,18h-2v-2h2V18z M17,18h-2v-2h2V18z"/></g></symbol>
+            <symbol id="svg-terminal" viewBox="0 0 24 24" fill="currentColor"><g><path d="M20,4H4C2.89,4,2,4.9,2,6v12c0,1.1,0.89,2,2,2h16c1.1,0,2-0.9,2-2V6C22,4.9,21.11,4,20,4z M20,18H4V8h16V18z M18,17h-6v-2 h6V17z M7.5,17l-1.41-1.41L8.67,13l-2.59-2.59L7.5,9l4,4L7.5,17z"/></g></symbol>
+            <symbol id="svg-tune" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"/></symbol>
+            <symbol id="svg-drag-indicator" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></symbol>
+            <symbol id="svg-play-arrow" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M8 5v14l11-7z"/></symbol>
+            <symbol id="svg-stop" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M6 6h12v12H6z"/></symbol>
+            <symbol id="svg-swap-vert" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M16 17.01V10h-2v7.01h-3L15 21l4-3.99h-3zM9 3L5 6.99h3V14h2V6.99h3L9 3z"/></symbol>
+            <symbol id="svg-swap-horiz" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M6.99 11L3 15l3.99 4v-3H14v-2H6.99v-3zM21 9l-3.99-4v3H10v2h7.01v3L21 9z"/></symbol>
+            <symbol id="svg-clear" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></symbol>
+            <symbol id="svg-fullscreen" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></symbol>
+            <symbol id="svg-add" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></symbol>
+            <symbol id="svg-fastforward" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"/></symbol>
+            <symbol id="svg-open" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></symbol>
+        </svg>
+    </div>
+
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <div class="logo"></div>
+
+            <ul class="menu">
+                <li>
+                    <button id="btnMenuMiner" data-target="page-miner" class="open-page active">
+                        <svg class="icon"><use href="#svg-dashboard"></use></svg>
+                    </button>
+                </li>
+                <li>
+                    <button id="btnMenuWallet" data-target="page-wallet" class="open-page">
+                        <svg class="icon"><use href="#svg-wallet"></use></svg>
+                    </button>
+                </li>
+                <li>
+                    <button id="btnMenuSchedule" data-target="page-schedule" class="open-page">
+                        <svg class="icon"><use href="#svg-calendar-month"></use></svg>
+                    </button>
+                </li>
+            </ul>
+
+            <button id="btnOpenTerminal">
+                <svg class="icon"><use href="#svg-terminal"></use></svg>
+            </button>
+            <button id="btnMenuSettings" data-target="page-settings" class="open-page">
+                <svg class="icon"><use href="#svg-tune"></use></svg>
+            </button>
+        </div>
+
+        <div class="main-content">
+
+            <div id="notifications-container" class="notifications-container">
+                <ul class="notifications"></ul>
+            </div>
+
+            <div class="page page-miner" id="page-miner">
+
+                <div class="section-header">
+                    <div class="title"></div>
+                    <div class="controls">
+                        <div class="mining-configuration-switcher">
+                            <div class="active-config">
+                                <div class="name">-------------</div>
+                                <svg class="icon">
+                                    <use href="#svg-chevron-down"></use>
+                                </svg>
+                            </div>
+                            <ul></ul>
+                        </div>
+                        <button class="btn btn-plain open-page ms-auto" data-target="page-settings">
+                            <svg class="icon"><use href="#svg-tune"></use></svg>
+                        </button>
+                        <button id="btnStartMining" class="btn btn-primary btn-lg shadow">Start Mining</button>
+                    </div>
+                </div>
+
+                <div class="dashboard">
+
+                    <div class="stats-container">
+                        <div class="box">
+                            <div class="title">Status</div>
+                            <div class="stat stat-sm" id="stat-status">
+                                <span class="indicator indicator-danger">Not mining</span>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="title">Encryptions</div>
+                            <div class="stat" id="stat-encryptions">
+                                <span class="value">--</span>
+                                <span class="units"></span>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="title">Upload</div>
+                            <div class="stat" id="stat-upload">
+                                <span class="value">--</span>
+                                <span class="units"></span>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="title">Threads</div>
+                            <div class="stat" id="stat-threads"><span>--</span> of <span>--</span></div>
+                        </div>
+                    </div>
+
+                    <div class="charts-container">
+                        <div class="box box-cpu-usage">
+                            <div class="title">CPU Usage</div>
+                            <div id="cpu-chart-container" class="cpu-chart-container" data-value="--">
+                                <canvas id="chart-cpu"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="box box-cpu-temp d-flex flex-column">
+                            <div class="title">CPU Temp</div>
+                            <div class="cpu-temp-container">
+                                <div id="stat-cpu-temp" class="value">--°</div>
+                            </div>
+                        </div>
+
+                        <div class="box box-wallet d-flex flex-column">
+                            <div class="title">Wallet</div>
+                            <div class="wallet-stats-container">
+                                <label>Balance</label>
+                                <div id="stats-wallet-balance">-- PKT</div>
+
+                                <label class="mt-3">Mined last 24h</label>
+                                <div id="stats-wallet-mined-24">-- PKT</div>
+                            </div>
+                            <div class="external-explorer-controls mt-3">
+                                <a class="btn btn-sm" onclick="openExternalLink(event, {appendWalletAddress: true})" data-url="https://explorer.pkt.cash/address/">
+                                    Explorer 
+                                </a>
+                                <a class="btn btn-sm" onclick="openExternalLink(event, {appendWalletAddress: true})" data-url="https://www.pkt.world/explorer?minutes=60&wallet=">
+                                    Pkt.world
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="box mt-3 chart-line-box">
+                            <div class="title d-flex">
+                                <div><span class="key key-encryptions"></span> Encryptions <span
+                                        id="encryption-units"></span></div>
+                                <div><span class="key key-upload"></span> Upload <span id="upload-units"></span></div>
+                            </div>
+
+                            <div class="chart">
+                                <canvas id="chart-encryptions"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="output" class="d-none">
+
+                    </div>
+
+                </div> <!-- dashboard -->
+
+                <div class="pool-status">
+                    <div class="box">
+                        <div class="title">Your Pools</div>
+
+                        <ul id="pool-status-list" class="pool-status-list"></ul>
+
+                    </div>
+                </div> <!-- pool-stats -->
+
+            </div> <!-- page-miner -->
+
+            <div class="page page-settings d-none" id="page-settings">
+
+                <div class="section-header">
+                    <div class="title">Settings</div>
+                    <div class="controls">
+                        <!-- -->
+                    </div>
+                </div>
+
+                <div class="tabs settings-tabs my-3">
+                    <ul>
+                        <li class="active" data-target=".box-settings-config">Mining Configurations</li>
+                        <li data-target=".box-settings-global">PacketCrypt</li>
+                        <li data-target=".box-settings-appearance">General Settings</li>
+                    </ul>
+                </div>
+
+                <div class="tab-content">
+                    <div class="tab form box-settings-config">
+                        <div class="box d-none" id="form-mining-configuration">
+                            <div class="mb-3">
+
+                                <div class="mb-3">
+                                    <label>Configuration Name</label>
+                                    <div class="form-text">If you have multiple configurations, a descriptive name can make them easier to use.</div>
+                                    <input type="text" id="txtSettingsConfigName">
+                                </div>
+
+                            </div>
+                            <div class="mb-3">
+                                <label>Wallet Address</label>
+                                <div class="form-text">Where should your mining rewards be paid?</div>
+                                <input type="text" id="txtSettingsPaymentAddr">
+                            </div>
+                            <div class="mb-3">
+                                <label>Threads</label>
+                                <div class="form-text">How many CPU threads should the miner use?</div>
+
+                                <div class="input-group">
+                                    <input type="number" id="txtSettingsThreads" placeholder="MAX">
+                                    <div class="addon">
+                                        of&nbsp; <span id="txtSettingsThreads-Count">--</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <label class="form-label">Mining Pools</label>
+
+                            <div id="pool-selector" class="pool-selector mb-3">
+                                <div class="pool-list-wrap">
+                                    <div>Available Pools</div>
+                                    <div class="pool-list pool-list-available draggable-list"></div>
+
+                                    <div class="add-list-item" id="btnCreateCustomPool">
+                                        <svg class="icon"><use href="#svg-add"></use></svg> <span>Add pool</span>
+                                    </div>
+                                </div>
+
+                                <div class="fs-3">
+                                    <svg class="icon"><use href="#svg-swap-horiz"></use></svg>
+                                </div>
+
+                                <div class="pool-list-wrap">
+                                    <div>Selected Pools</div>
+                                    <div class="pool-list pool-list-selected draggable-list"></div>
+                                </div>
+                            </div>
+
+                            <div class="text-sm">
+                                <label>Key</label>
+                                <p><span class="diff-indicator">----</span> &nbsp;&nbsp;Preferred mining difficulty of the pool.</p>
+                                <p><span class="diff-indicator invalid">----</span> &nbsp;&nbsp;Indicates a mining difficulty that may be incompatible with your primary pool. Check the pool's policy.</p>
+                            </div>
+
+                            <div class="box-footer">
+                                <button id="btnCancelMiningConfiguration" type="button"
+                                    class="btn btn-light btn-lg">Cancel</button>
+                                <button id="btnSaveMiningConfiguration" type="button"
+                                    class="btn btn-primary btn-lg ms-auto">Save
+                                    Configuration</button>
+                            </div>
+
+                        </div>
+
+                        <div class="box-settings-saved-configs">
+                            <div class="box">
+                                <label class="form-label">Saved Configurations</label>
+
+                                <div class="form-text mb-3">Save configurations so that they can be quickly loaded later.</div>
+
+                                <div class="saved-config-list">
+                                    <div class="add-list-item" id="btnCreateMiningConfiguration">
+                                        <svg class="icon"><use href="#svg-add"></use></svg> <span>Add configuration</span>
+                                    </div>
+                                    <div class="insertion-point"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="tab box box-settings-global inactive">
+                        <label>Path to PacketCrypt</label>
+                        <div class="form-text">Where is PacketCrypt stored on this computer?</div>
+                        <div class="input-group">
+                            <input type="text" id="txtSettingsPacketcryptPath" readonly>
+                            <button id="btnSettingsPacketCryptPath" class="btn btn-primary">Choose</button>
+                        </div>
+                        <div id="formNoteSettingsPacketCryptPath" class="form-note d-none">Tip: PacketCrypt is available globally on your system. If you wish to use a different version, please select it above.</div>
+
+                        <div class="box-footer">
+                            <button id="btnSaveSettings" type="button"
+                                class="btn btn-primary btn-lg ms-auto">Save</button>
+                        </div>
+                    </div>
+
+                    <div class="tab box box-settings-appearance inactive">
+
+                        <label class="mb-3">Updates</label>
+                        <label class="switchy">
+                            <input id="chkSettingsAutoUpdate" type="checkbox">
+                            Download and install updates automatically
+                        </label>
+
+                        <label class="mt-3">Dashboard</label>
+                        <p class="form-text">If Minr is unable to detect the CPU temperature, you may want to hide the widget.</p>
+                        <label class="switchy">
+                            <input id="chkSettingsHideCPUTemp" type="checkbox">
+                            Hide CPU temperature widget
+                        </label>
+
+                        <label class="mt-3">Appearance</label>
+                        <div class="color-mode-switcher">
+                            <button class="item btn" data-mode="light">
+                                <img src="./img/color-mode-light.png" class="shadow">
+                                <p>Light</p>
+                            </button>
+                            <button class="item btn" data-mode="dark">
+                                <img src="./img/color-mode-dark.png" class="shadow">
+                                <p>Dark</p>
+                            </button>
+                            <button class="item btn" data-mode="system">
+                                <img src="./img/color-mode-auto.png" class="shadow">
+                                <p>Auto</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-version"></div>
+
+            </div> <!-- page-settings -->
+
+            <div class="page page-schedule d-none" id="page-schedule">
+
+                <div class="section-header">
+                    <div class="title">Schedule</div>
+                    <div class="controls">
+                        <button id="btnOpenScheduleSettings" class="btn btn-plain ms-auto">
+                            <svg class="icon"><use href="#svg-tune"></use></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="scheduler">
+                    <div class="taskbar">
+                        <div class="title mb-3">Tasks</div>
+
+                        <div class="toolbox">
+                            <div class="draggable-list">
+                                <div class="list-item" data-task="mining-start">
+                                    <div>
+                                        <svg class="icon text-success"><use href="#svg-play-arrow"></use></svg>
+                                        Start mining
+                                    </div>
+                                </div>
+                                <div class="list-item" data-task="mining-stop">
+                                    <div>
+                                        <svg class="icon text-danger"><use href="#svg-stop"></use></svg>
+                                        Stop mining
+                                    </div>
+                                </div>
+                                <div class="list-item" data-task="configuration-change">
+                                    <div>
+                                        <svg class="icon text-warning"><use href="#svg-swap-vert"></use></svg>
+                                        Change configuration
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="days box">
+                        <div class="day">
+                            <div class="title">Monday <svg class="icon clear-day-tasks"><use href="#svg-clear"></use></svg></div>
+                            <div class="task-list draggable-list day-tasks"></div>
+                        </div>
+                        <div class="day">
+                            <div class="title">Tuesday <svg class="icon clear-day-tasks"><use href="#svg-clear"></use></svg></div>
+                            <div class="task-list draggable-list day-tasks"></div>
+                        </div>
+                        <div class="day">
+                            <div class="title">Wednesday <svg class="icon clear-day-tasks"><use href="#svg-clear"></use></svg></div>
+                            <div class="task-list draggable-list day-tasks"></div>
+                        </div>
+                        <div class="day">
+                            <div class="title">Thursday <svg class="icon clear-day-tasks"><use href="#svg-clear"></use></svg></div>
+                            <div class="task-list draggable-list day-tasks"></div>
+                        </div>
+                        <div class="day">
+                            <div class="title">Friday <svg class="icon clear-day-tasks"><use href="#svg-clear"></use></svg></div>
+                            <div class="task-list draggable-list day-tasks"></div>
+                        </div>
+                        <div class="day">
+                            <div class="title">Saturday <svg class="icon clear-day-tasks"><use href="#svg-clear"></use></svg></div>
+                            <div class="task-list draggable-list day-tasks"></div>
+                        </div>
+                        <div class="day">
+                            <div class="title">Sunday <svg class="icon clear-day-tasks"><use href="#svg-clear"></use></svg></div>
+                            <div class="task-list draggable-list day-tasks"></div>
+                        </div>
+                    </div> <!-- days -->
+
+                </div>
+
+            </div> <!-- page-schedule -->
+
+            <div class="page page-wallet d-none" id="page-wallet">
+
+                <div class="section-header">
+                    <div class="title">Wallet</div>
+                    <div class="controls">
+                        <!-- -->
+                    </div>
+                </div>
+
+                <div class="box mt-3 chart-line-box">
+                    <div class="title d-flex">
+                        <div>Mining Income</div>
+                    </div>
+
+                    <div class="chart">
+                        <canvas id="chart-mining-income"></canvas>
+                    </div>
+                </div>
+
+                <div class="wallet-stats-container mt-3">
+                    <div class="box">
+                        <div class="title">Balance</div>
+
+                        <div id="stats-wallet-balance-2" class="text-dark text-lg">-- PKT</div>
+                    </div>
+
+                    <div class="box">
+                        <div class="title">Mined Last 24h</div>
+
+                        <div id="stats-wallet-mined-24-2" class="text-dark text-lg">-- PKT</div>
+                    </div>
+                </div>
+
+                <div class="external-explorer-controls mt-3">
+                    <a class="box box-link" onclick="openExternalLink(event, {appendWalletAddress: true})" data-url="https://explorer.pkt.cash/address/">
+                        Block explorer 
+                        <svg class="icon"><use href="#svg-open"></use></svg>
+                    </a>
+                    <a class="box box-link" onclick="openExternalLink(event, {appendWalletAddress: true})" data-url="https://www.pkt.world/explorer?minutes=60&wallet=">
+                        Pkt.world explorer 
+                        <svg class="icon"><use href="#svg-open"></use></svg>
+                    </a>
+                </div>
+
+                <div class="box mt-3">
+                    <ul class="list-group mining-income-list" id="mining-income-list"></ul>
+                </div> <!-- box -->
+
+            </div> <!-- page-wallet -->
+
+            <div id="terminal-window" class="terminal-window">
+                <div class="controls">
+                    Terminal Output
+                    <button class="close" id="btnMaximiseTerminal"><svg class="icon"><use href="#svg-fullscreen"></use></svg></button>
+                    <button class="close" id="btnCloseTerminal"><svg class="icon"><use href="#svg-clear"></use></svg></button>
+                </div>
+                <div class="terminal-container">
+                    <div id="terminal"></div>
+                </div>
+            </div>
+
+        </div> <!-- main-content -->
+    </div> <!-- container-->
+
+    <div class="modal-overlay"></div>
+    <div class="modal task-settings-modal">
+        <div class="settings box mt-3">
+            <div class="modal-header">
+                <span>Task Settings</span>
+                <button type="button" class="btn close-control"><svg class="icon"><use href="#svg-clear"></use></svg></button>
+            </div>
+            <div class="mb-3">
+                <div><label>Task time</label></div>
+                <input id="txtTaskSettings_Time" type="time" value="00:00">
+            </div>
+            <div class="mb-3" id="task-settings-mining-configs">
+                <div><label>Mining configuration</label></div>
+                <select id="ddlTaskSettings_MiningConfigs"></select>
+            </div>
+
+            <div class="modal-footer">
+                <button id="btnTaskSettings_Save" type="button" class="btn btn-primary btn-lg shadow">Save</button>
+                <button id="btnTaskSettings_Delete" type="button" class="btn btn-danger btn-lg shadow">Delete</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal schedule-settings-modal">
+        <div class="settings box mt-3">
+            <div class="modal-header">
+                <span>Schedule Settings</span>
+                <button type="button" class="btn close-control"><svg class="icon"><use href="#svg-clear"></use></svg></button>
+            </div>
+            <div class="d-flex align-flex-start">
+                <label class="switchy mb-3 me-3">
+                    <input id="chkSettingsScheduleUse" type="checkbox">
+                </label>
+                <div class="settings-label">
+                    <label>Use schedule</label>
+                    <div class="form-text">Enable or disable scheduling</div>
+                </div>
+            </div>
+
+            <div class="d-flex align-flex-start my-3">
+                <label class="switchy mb-3 me-3">
+                    <input id="chkSettingsSchedulePreventSleep" type="checkbox">
+                </label>
+                <div class="settings-label">
+                    <label>Prevent computer from sleeping if a schedule is set</label>
+                    <div class="form-text">Scheduled tasks will not run if your computer enters sleep mode so make sure to enable this setting to avoid missed tasks</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal custom-pool-settings-modal">
+        <div class="settings box mt-3">
+            <div class="modal-header">
+                <span>Custom Pool URL</span>
+                <button type="button" class="btn close-control"><svg class="icon"><use href="#svg-clear"></use></svg></button>
+            </div>
+            <div class="mb-3" id="task-settings-mining-configs">
+                <div><label>Pool</label></div>
+                <select id="ddlCustomPool_Pool">
+                    <option value="-1">Please choose...</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <div><label>Name</label></div>
+                <input id="txtCustomPool_Label" type="text" placeholder="My custom URL...">
+            </div>
+            <div class="mb-3">
+                <div><label>URL</label></div>
+                <input id="txtCustomPool_URL" type="text" placeholder="http://...">
+            </div>
+
+            <input type="hidden" id="hdnCustomPool_Id">
+
+            <div class="modal-footer">
+                <button id="btnSaveCustomPoolSettings" type="button" class="btn btn-primary btn-lg shadow">Save</button>
+                <button id="btnDeleteCustomPoolSettings" type="button" class="btn btn-danger btn-lg shadow">Delete</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const DEFAULT_PAYMENT_ADDRESS = 'pkt1q6sj0mchq7ltwm8c9tpm2wteqmeldr2ye5lcr60';
+    </script>
+
+    <script src="./log-parser.js"></script>
+    <script src="./vendors/awn.var.js"></script>
+    <script src="./vendors/switchy.min.js"></script>
+    <script src="./vendors/sortable.min.js"></script>
+    <script src="./index.js"></script>
+</body>
+
+</html>

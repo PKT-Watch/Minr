@@ -1,0 +1,34 @@
+.pool-status-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+        padding: $box-padding;
+        background: var(--bg-light);
+        border-radius: var(--border-radius);
+
+        +li {
+            margin-top: $grid-gap;
+        }
+
+        .header {
+            font-size: .8rem;
+            display: flex;
+            margin-bottom: .5rem;
+
+            .left {
+                margin-right: auto;
+            }
+        }
+
+        .pool {
+            display: flex;
+            color: var(--text-dark);
+
+            .pool-name {
+                margin-right: auto;
+            }
+        }
+    }
+}

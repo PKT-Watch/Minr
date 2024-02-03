@@ -1,0 +1,38 @@
+.page-settings {
+    .section-header {
+        grid-area: section-header;
+        margin-bottom: 0;
+    }
+
+    .box-settings-config {
+        display: grid;
+        grid-template-columns: var(--saved-configs-width) calc(100vw - var(--sidebar-width) - var(--saved-configs-width) - var(--page-padding-horz) - var(--page-padding-horz) - var(--grid-gap)); 
+        grid-template-rows: auto auto auto auto; 
+        grid-template-areas: 
+            "box-settings-saved-configs box-settings-config";
+        gap: $grid-gap;
+
+        .box {
+            grid-area: box-settings-config;          
+        }     
+    }
+
+    .box-settings-appearance {
+        grid-area: box-settings-appearance;
+    }
+
+    .box-settings-saved-configs {
+        grid-area: box-settings-saved-configs;
+    }
+
+    .settings-tabs {
+        grid-area: settings-tabs;
+    }
+
+    .app-version {
+        font-size: .8rem;
+        position: absolute;
+        bottom: 5px;
+        right: 10px;
+    }
+}

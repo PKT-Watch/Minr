@@ -1,0 +1,83 @@
+.saved-config-list {
+    .add-list-item {
+        margin-bottom: var(--grid-gap);
+    }
+
+    .list-item {
+        margin-bottom: var(--grid-gap);
+        background: var(--bg-light);
+        border-radius: var(--border-radius);
+        border: 1px solid var(--border-color-light);
+        position: relative;
+        overflow: hidden;
+
+        &.active {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 1px var(--color-primary);
+
+            &::after {
+                content: 'ACTIVE';
+                background: var(--color-primary);
+                color: #FFF;
+                padding: 0.2rem 0.5rem;
+                font-size: 0.7rem;
+                border-bottom-left-radius: var(--border-radius);
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+        }
+
+        > div:first-child {
+            padding: .5rem var(--box-padding);
+        }
+
+        .settings-preview {
+            display: flex;
+            align-items: center;
+            font-size: 0.8em;
+            margin-top: .5rem;
+            display: none;
+
+            > div + div {
+                margin-left: .5rem;
+            }
+
+            .diff-indicator {
+                background: var(--bg-lightest);
+            }
+        }
+
+        .controls {
+            border-top: 1px solid var(--border-color-light);
+            display: flex;
+            justify-content: space-between;
+            background: var(--bg-lightest);
+
+            a {
+                color: var(--text-light);
+                font-size: .8rem;
+                transition: var(--transition);
+                flex: 1;
+                padding: 0.5rem var(--box-padding);
+                text-align: center;
+
+                + a {
+                    border-left: 1px solid var(--border-color-light);
+                }
+
+                &:hover {
+                    color: var(--text-dark);
+                }
+
+                &:last-child {
+                    &:hover {
+                        color: #FFF;
+                        background: var(--color-danger);
+                    }
+                }
+                
+            }
+        }
+    }
+}

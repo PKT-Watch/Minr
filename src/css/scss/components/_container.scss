@@ -1,0 +1,31 @@
+.container {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.main-content {
+    background: var(--bg-light);
+    display: flex;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    position: relative;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.page {
+    padding: var(--page-padding-vert) var(--page-padding-horz);
+    flex: 1;
+    position: relative;
+
+    &.page-wallet {
+        overflow-x: hidden; // fixes chart resizing on wallet page
+    }
+
+    @media (min-width: 1200px) {
+        padding: var(--page-padding-vert) var(--page-padding-horz);
+    }
+}

@@ -1,0 +1,17 @@
+.diff-indicator {
+    display: inline-block;
+    width: 50px;
+    text-align: center;
+    font-size: 0.8em;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: var(--bg-light);
+    box-shadow: $shadow;
+    border: 1px solid var(--border-color);
+
+    &.invalid {
+        background-color: var(--color-danger);
+        border-color: var(--color-danger-dark);
+        color: #FFF;
+    }
+}

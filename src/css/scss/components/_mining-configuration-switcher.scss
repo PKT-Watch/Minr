@@ -1,0 +1,58 @@
+.mining-configuration-switcher {
+    @extend .box;
+
+    padding: 0;
+    padding-bottom: 0;
+    position: absolute;
+    top: 0;
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: none;
+        padding: calc(var(--box-padding) / 2);
+
+        li {
+            padding: calc(var(--box-padding) / 4) calc(var(--box-padding) / 2);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+
+            + li {
+                margin-top: .25rem;
+            }
+
+            &:hover {
+                background: var(--bg-light-dark);
+            }
+        }
+    }
+
+    .active-config {
+        display: flex;
+        align-items: center;
+        padding: calc(var(--box-padding) / 2) var(--box-padding);
+        padding-right: calc(var(--box-padding) / 2);
+
+        .name {
+            margin-right: .25rem;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            margin-left: auto;
+        }
+    }
+
+    &.active {
+        ul {
+            display: block;
+        }
+
+        .active-config {
+            border-bottom: 1px solid var(--border-color);
+        }
+    }
+
+}

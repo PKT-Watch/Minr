@@ -1,0 +1,115 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font: caption;
+    font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    line-height: 1.5;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+:not(input):not(textarea),
+:not(input):not(textarea)::after,
+:not(input):not(textarea)::before {
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+input, button, textarea, :focus {
+    outline: none;
+}
+
+body {
+    color: var(--text-light);
+}
+
+a {
+    color: var(--color-primary);
+}
+
+.shadow {
+    box-shadow: $shadow;
+}
+
+.d-none {
+    display: none !important;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.align-flex-start {
+    align-items: flex-start;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.ms-auto {
+    margin-left: auto!important;
+}
+
+.mt-3 {
+    margin-top: var(--grid-gap)!important;
+}
+
+.mb-3 {
+    margin-bottom: var(--grid-gap)!important;
+}
+
+.my-3 {
+    margin-top: var(--grid-gap)!important;
+    margin-bottom: var(--grid-gap)!important;
+}
+
+.ms-3 {
+    margin-left: var(--grid-gap)!important;
+}
+
+.me-3 {
+    margin-right: var(--grid-gap)!important;
+}
+
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-dark {
+    color: var(--text-dark);
+}
+
+.text-success {
+    color: var(--color-success);
+}
+
+.text-danger {
+    color: var(--color-danger);
+}
+
+.text-warning {
+    color: var(--color-warning);
+}
+
+.text-lg {
+    font-size: 1.4rem;
+}
+
+.text-sm {
+    font-size: .8em;
+}

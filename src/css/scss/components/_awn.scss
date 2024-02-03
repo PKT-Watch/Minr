@@ -1,0 +1,16 @@
+.awn-toast-wrapper {
+    padding: 0.5rem 0.75rem;
+}
+
+.awn-toast-progress-bar {
+    height: 3px;
+
+    &::after {
+        height: 3px;
+    }
+}
+
+.awn-toast-label {
+    font-size: 1rem;
+    text-transform: none;
+}
